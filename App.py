@@ -30,10 +30,10 @@ class VideoTransformer(VideoTransformerBase):
         #image gray
         img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         faces = face_cascade.detectMultiScale(
-            image=img_gray, scaleFactor=1.3, minNeighbors=5)
+            image=img_gray, scaleFactor=1.3, minNeighbors=1)
         for (x, y, w, h) in faces:
             cv2.rectangle(img=img, pt1=(x, y), pt2=(
-                x + w, y + h), color=(255, 0, 0), thickness=2)
+                x + w, y + h), color=(0, 0, 255), thickness=2)
             roi_gray = img_gray[y:y + h, x:x + w]
             roi_gray = cv2.resize(roi_gray, (48, 48), interpolation=cv2.INTER_AREA)
             if np.sum([roi_gray]) != 0:
